@@ -44,8 +44,6 @@
                     <button class="btn btn-primary">Create</button>
                 </form>
 
-                post 1 post 2 post 3
-
 
 
             
@@ -64,9 +62,14 @@
 
                             <!-- comments  -->
 
-                            for comment in post.post_comments.all
+                            {% for comment in post.post_comments.all %}
 
+                            <p>{{comment.comment}}</p>
+                            {% endfor %}
                         </div>
+
+                        <a href="/like/{{post.id}}">Like</a>
+                        <p>Current likes {{ post.likes.count }}</p>
                     </div>
                     
                 {% endfor %}               

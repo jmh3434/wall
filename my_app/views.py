@@ -92,3 +92,25 @@ def create_post(request):
 
 
     return redirect('/success')
+
+def add_comment(request,id):
+
+    facebook_post = Facebook_Post.objects.get(id=id)
+
+    poster = User.objects.get(id=request.session["user_id"])
+
+    comment = request.POST["comment"]
+
+    Comment.objects.create(comment=comment,poster=poster,facebook_post=facebook_post)
+
+    return redirect('/success')
+
+def like(request,id):
+
+    facebook_post = Facebook_Post.objects.get(id=id)
+    user = User.objects.get(id=request.session["user_id"])
+
+    facebook_post.likes.add(user)
+
+    return redirect('/success')
+

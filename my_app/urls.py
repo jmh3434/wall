@@ -8,4 +8,6 @@ urlpatterns = [
     path('success',views.success),
     path('logout',views.logout),
     path('create_post',views.create_post),
+    path('add_comment/<int:id>',views.add_comment),
+    path('like/<int:id>',views.like),
 ]
